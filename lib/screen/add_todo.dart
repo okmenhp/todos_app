@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:todos_app/model/todo.dart';
+import 'package:todos_app/services/todo_service.dart';
 
 class AddToDo extends StatefulWidget {
   const AddToDo({super.key});
@@ -8,6 +10,10 @@ class AddToDo extends StatefulWidget {
 }
 
 class _AddToDoState extends State<AddToDo> {
+  final _todoTaskController = TextEditingController();
+  final _todoEmojiController = TextEditingController();
+  final _todoDateController = TextEditingController();
+  final _todoService = TodoService();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,9 +50,10 @@ class _AddToDoState extends State<AddToDo> {
             color: const Color(0xFF17171A),
             child: Padding(
               padding: const EdgeInsets.all(16),
-              child: Column(children: const [
+              child: Column(children: [
                 TextField(
-                  decoration: InputDecoration(
+                  controller: _todoTaskController,
+                  decoration: const InputDecoration(
                     enabled: true,
                     hintText: 'Task',
                     hintStyle: TextStyle(fontSize: 20.0, color: Colors.white),
@@ -55,10 +62,11 @@ class _AddToDoState extends State<AddToDo> {
                     ),
                   ),
                 ),
-                SizedBox(height: 30),
+                const SizedBox(height: 30),
                 TextField(
-                  style: TextStyle(fontSize: 20),
-                  decoration: InputDecoration(
+                  controller: _todoDateController,
+                  style: const TextStyle(fontSize: 20),
+                  decoration: const InputDecoration(
                     enabled: true,
                     hintText: 'Date',
                     hintStyle: TextStyle(fontSize: 20.0, color: Colors.white),
@@ -67,10 +75,11 @@ class _AddToDoState extends State<AddToDo> {
                     ),
                   ),
                 ),
-                SizedBox(height: 30),
+                const SizedBox(height: 30),
                 TextField(
-                  style: TextStyle(fontSize: 20),
-                  decoration: InputDecoration(
+                  controller: _todoEmojiController,
+                  style: const TextStyle(fontSize: 20),
+                  decoration: const InputDecoration(
                     enabled: true,
                     hintText: 'Emoji',
                     hintStyle: TextStyle(fontSize: 20.0, color: Colors.white),
@@ -96,7 +105,14 @@ class _AddToDoState extends State<AddToDo> {
                           borderRadius:
                               BorderRadius.circular(32)), // foreground
                     ),
-                    onPressed: () {},
+                    onPressed: () async {
+                      var todo = Todo();
+                      todo.task = _todoTaskController.text;
+                      todo.date = _todoDateController.text;
+                      todo.emoji = _todoEmojiController.text;
+                      var result = await _todoService.saveTodo(todo);
+                      Navigator.pop(context, result);
+                    },
                     child: const Padding(
                       padding: EdgeInsets.symmetric(vertical: 20),
                       child:
