@@ -1,10 +1,23 @@
-# todos_app
+# Project Dependencies
 
-Extract Widget Checkbox
-## Getting Started
+  - sqflite: ^2.2.2
+  - path_provider: ^2.0.11
+  - intl: ^0.18.0
+  
+# Project Structure
 
-For help getting started with Flutter development, view the online
-[documentation](https://flutter.dev/).
-
-For instructions integrating Flutter modules to your existing applications,
-see the [add-to-app documentation](https://flutter.dev/docs/development/add-to-app).
+  ├── ...
+  ├── lib                    
+  │   ├── db   
+  │   |   └── db_todo.dart
+  │   ├── model
+  │   |   └── todo.dart
+  │   └── screen
+  |   |   ├── add_todo.dart
+  |   |   ├── edit_todo.dart
+  |   |   └── view_todo.dart
+  |   └── main.dart
+  └── ...
+  
+# Image
+![Screenshot_1672301202](https://user-images.githubusercontent.com/56033184/209922240-83a25eca-e849-4c95-b78f-150684a7d314.png)
