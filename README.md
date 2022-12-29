@@ -21,4 +21,4 @@
   ```
 # Image
 
-![Screenshot_1672301202](https://user-images.githubusercontent.com/56033184/209922977-4d5c4ee7-1896-42b7-b3c6-b70c3a197d88.png =250x250)
+![Screenshot_1672301202](https://user-images.githubusercontent.com/56033184/209922977-4d5c4ee7-1896-42b7-b3c6-b70c3a197d88.png)
