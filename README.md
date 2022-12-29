@@ -1,7 +1,6 @@
 # todos_app
 
-A new Flutter module project.
-
+Extract Widget Checkbox
 ## Getting Started
 
 For help getting started with Flutter development, view the online
